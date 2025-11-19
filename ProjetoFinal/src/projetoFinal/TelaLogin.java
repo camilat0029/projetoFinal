@@ -14,6 +14,8 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Toolkit;
 
 public class TelaLogin extends JFrame {
 
@@ -22,10 +24,11 @@ public class TelaLogin extends JFrame {
 	private JTextField tfUsuario;
 	private JPasswordField pfSenha;
 	
-	private String usuario1 = "Camila";
-	private String senha1 = "1234";
+	protected String usuario1 = "Camila";
+	protected String senha1 = "1234";
 	
 	private Usuario usuario;
+	private TelaCadastro cadastro;
 
 	/**
 	 * Launch the application.
@@ -47,6 +50,7 @@ public class TelaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaLogin() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -56,7 +60,7 @@ public class TelaLogin extends JFrame {
 		setLocationRelativeTo(null);
 		
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(240, 240, 255));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -105,8 +109,32 @@ public class TelaLogin extends JFrame {
 		});
 		btEntrar.setForeground(new Color(0, 0, 0));
 		btEntrar.setBackground(new Color(213, 213, 255));
-		btEntrar.setBounds(178, 189, 89, 23);
+		btEntrar.setBounds(182, 189, 98, 23);
 		contentPane.add(btEntrar);
+		
+		cadastro = new TelaCadastro();
+		
+		JButton btFazerCadastro = new JButton("Cadastre-se");
+		btFazerCadastro.setHorizontalAlignment(SwingConstants.LEFT);
+		btFazerCadastro.setForeground(new Color(0, 0, 160));
+		btFazerCadastro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				cadastro.setVisible(true);
+				
+			}
+		});
+		btFazerCadastro.setBackground(new Color(255, 255, 255));
+		btFazerCadastro.setBounds(242, 222, 106, 23);
+		contentPane.add(btFazerCadastro);
+		
+		btFazerCadastro.setBorderPainted(false);
+		
+		JLabel lbMensagem = new JLabel("Não tem uma conta ainda?");
+		lbMensagem.setBounds(90, 227, 159, 13);
+		contentPane.add(lbMensagem);
+		
+		
 
 	}
 }
