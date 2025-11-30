@@ -56,7 +56,6 @@ public class TelaLogin extends JFrame {
 		setBounds(100, 100, 450, 300);
 		
 		setResizable(false);
-		
 		setLocationRelativeTo(null);
 		
 		contentPane = new JPanel();

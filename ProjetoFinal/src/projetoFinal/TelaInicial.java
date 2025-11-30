@@ -46,6 +46,9 @@ public class TelaInicial extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 616, 349);
 		
+		setResizable(false);
+		setLocationRelativeTo(null);
+		
 		//ImageIcon icone = new ImageIcon(getClass().getResource("/imagem/RacaoCachorro.png"));
 		//setIconImage(icone.getImage());
 		

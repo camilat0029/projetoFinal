@@ -19,10 +19,16 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class TelaCadastroProdutos extends JFrame {
 
@@ -36,6 +42,11 @@ public class TelaCadastroProdutos extends JFrame {
 	private JTextField tfDataValid;
 	
 	private TabelaProdutosCadastrado produtosCad;
+	private JTable tabela;
+	
+	DefaultTableModel tabelaM;
+	
+	private int linhaAlt = -1;
 
 	/**
 	 * Launch the application.
@@ -60,9 +71,12 @@ public class TelaCadastroProdutos extends JFrame {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
 		setTitle("Cadastro de Produtos");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 589, 542);
+		setBounds(100, 100, 935, 835);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		setResizable(false);
+		setLocationRelativeTo(null);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -80,129 +94,129 @@ public class TelaCadastroProdutos extends JFrame {
 		
 		JLabel lbCodigo = new JLabel("Código");
 		lbCodigo.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbCodigo.setBounds(21, 69, 46, 14);
+		lbCodigo.setBounds(466, 23, 46, 14);
 		contentPane.add(lbCodigo);
 		
 		tfCodigo = new JTextField();
-		tfCodigo.setBounds(77, 66, 86, 20);
+		tfCodigo.setBounds(522, 22, 115, 20);
 		contentPane.add(tfCodigo);
 		tfCodigo.setColumns(10);
 		
 		JLabel lbPreco = new JLabel("Preço");
 		lbPreco.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbPreco.setBounds(206, 69, 46, 14);
+		lbPreco.setBounds(679, 23, 46, 14);
 		contentPane.add(lbPreco);
 		
 		tfPreco = new JTextField();
 		tfPreco.setToolTipText("");
-		tfPreco.setBounds(248, 66, 86, 20);
+		tfPreco.setBounds(724, 22, 159, 20);
 		contentPane.add(tfPreco);
 		tfPreco.setColumns(10);
 		
 		JLabel lbQuant = new JLabel("Quantidade");
 		lbQuant.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbQuant.setBounds(21, 120, 71, 14);
+		lbQuant.setBounds(21, 67, 71, 14);
 		contentPane.add(lbQuant);
 		
 		JSpinner spQuant = new JSpinner();
 		spQuant.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spQuant.setBounds(201, 203, 40, 20);
+		spQuant.setBounds(881, 115, 40, 20);
 		contentPane.add(spQuant);
 		
 		tfQuantidade = new JTextField();
-		tfQuantidade.setBounds(95, 117, 86, 20);
+		tfQuantidade.setBounds(102, 66, 86, 20);
 		contentPane.add(tfQuantidade);
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbMedidas = new JLabel("Unidade Medida");
 		lbMedidas.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbMedidas.setBounds(206, 120, 105, 14);
+		lbMedidas.setBounds(239, 67, 105, 14);
 		contentPane.add(lbMedidas);
 		
 		JComboBox cbUniMed = new JComboBox();
 		cbUniMed.setModel(new DefaultComboBoxModel(new String[] {"un", "kg", "g", "m", "cm", "mm", "L", "ml"}));
 		cbUniMed.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		cbUniMed.setBounds(318, 117, 125, 22);
+		cbUniMed.setBounds(348, 63, 76, 22);
 		contentPane.add(cbUniMed);
 		
 		JLabel lbMarca = new JLabel("Marca");
 		lbMarca.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbMarca.setBounds(21, 173, 46, 14);
+		lbMarca.setBounds(466, 67, 46, 14);
 		contentPane.add(lbMarca);
 		
 		tfMarca = new JTextField();
-		tfMarca.setBounds(66, 170, 115, 20);
+		tfMarca.setBounds(522, 66, 115, 20);
 		contentPane.add(tfMarca);
 		tfMarca.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Escolha o Grupo Alvo:");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel.setBounds(21, 222, 210, 14);
+		lblNewLabel.setBounds(21, 116, 210, 14);
 		contentPane.add(lblNewLabel);
 		
 		JCheckBox ckMamiferos = new JCheckBox("Mamíferos");
 		ckMamiferos.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		ckMamiferos.setBounds(16, 255, 97, 23);
+		ckMamiferos.setBounds(21, 150, 97, 23);
 		contentPane.add(ckMamiferos);
 		
 		JCheckBox ckReptil = new JCheckBox("Répteis");
 		ckReptil.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		ckReptil.setBounds(171, 255, 97, 23);
+		ckReptil.setBounds(139, 150, 97, 23);
 		contentPane.add(ckReptil);
 		
 		JCheckBox ckAnfibios = new JCheckBox("Anfíbios");
 		ckAnfibios.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		ckAnfibios.setBounds(311, 255, 97, 23);
+		ckAnfibios.setBounds(247, 150, 97, 23);
 		contentPane.add(ckAnfibios);
 		
 		JCheckBox ckPeixes = new JCheckBox("Peixes");
 		ckPeixes.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		ckPeixes.setBounds(16, 297, 97, 23);
+		ckPeixes.setBounds(364, 150, 97, 23);
 		contentPane.add(ckPeixes);
 		
 		JCheckBox ckAves = new JCheckBox("Aves");
 		ckAves.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		ckAves.setBounds(171, 297, 97, 23);
+		ckAves.setBounds(483, 150, 97, 23);
 		contentPane.add(ckAves);
 		
 		JLabel lbDataVal = new JLabel("Data de Validade");
 		lbDataVal.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbDataVal.setBounds(218, 174, 116, 14);
+		lbDataVal.setBounds(679, 67, 116, 14);
 		contentPane.add(lbDataVal);
 		
 		tfDataValid = new JTextField();
-		tfDataValid.setBounds(327, 171, 97, 20);
+		tfDataValid.setBounds(784, 66, 97, 20);
 		contentPane.add(tfDataValid);
 		tfDataValid.setColumns(10);
 		
 		JLabel lbClassiicacao = new JLabel("Classificação:");
 		lbClassiicacao.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbClassiicacao.setBounds(21, 345, 105, 14);
+		lbClassiicacao.setBounds(21, 204, 105, 14);
 		contentPane.add(lbClassiicacao);
 		
 		JRadioButton rbAlimento = new JRadioButton("Alimento");
 		rbAlimento.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rbAlimento.setBounds(17, 380, 109, 23);
+		rbAlimento.setBounds(17, 241, 109, 23);
 		contentPane.add(rbAlimento);
 		
 		JRadioButton rbVestimenta = new JRadioButton("Vestimenta");
 		rbVestimenta.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rbVestimenta.setBounds(171, 380, 109, 23);
+		rbVestimenta.setBounds(139, 241, 109, 23);
 		contentPane.add(rbVestimenta);
 		
 		JRadioButton rbAcessorio = new JRadioButton("Acessório");
 		rbAcessorio.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rbAcessorio.setBounds(315, 380, 109, 23);
+		rbAcessorio.setBounds(253, 241, 109, 23);
 		contentPane.add(rbAcessorio);
 		
 		JRadioButton rbMedicamento = new JRadioButton("Medicamentos");
 		rbMedicamento.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rbMedicamento.setBounds(17, 418, 109, 23);
+		rbMedicamento.setBounds(364, 241, 109, 23);
 		contentPane.add(rbMedicamento);
 		
 		JRadioButton rbHigBel = new JRadioButton("Higiene e Beleza");
 		rbHigBel.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		rbHigBel.setBounds(171, 418, 126, 23);
+		rbHigBel.setBounds(483, 241, 126, 23);
 		contentPane.add(rbHigBel);
 		
 		ButtonGroup classificacao = new ButtonGroup();
@@ -215,90 +229,317 @@ public class TelaCadastroProdutos extends JFrame {
 		
 		
 		JButton btCadastrarProd = new JButton("Cadastrar");
+		btCadastrarProd.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btCadastrarProd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				produtosCad = new TabelaProdutosCadastrado();
+				tabelaM = (DefaultTableModel) tabela.getModel();
+				
 				
 				String nome = tfNomeProduto.getText();
 				String codigo = tfCodigo.getText();
 				String preco = tfPreco.getText();
-				// int preco = Integer.parseInt(tfPreco.getText());
-				
 				String quant = tfQuantidade.getText();
-				// int quant2 = spQuant.getValue().toString().;
+				
 				String uniMedida = (String) cbUniMed.getSelectedItem();
 				String marca = tfMarca.getText();
 				String dataValid = tfDataValid.getText();
-				String classificacao = "";
+				String classificacao2 = "";
 				String grupoAlvo = "";
 				
-				if (rbAlimento.isSelected()) {
-					classificacao = rbAlimento.getText();
-				}
-				if (rbVestimenta.isSelected()) {
-					classificacao = rbVestimenta.getText();
-				}
-				if (rbAcessorio.isSelected()) {
-					classificacao = rbAcessorio.getText();
-				}
-				if (rbMedicamento.isSelected()) {
-					classificacao = rbMedicamento.getText();
-				}
-				if (rbHigBel.isSelected()) {
-					classificacao = rbHigBel.getText();
+				if (linhaAlt >= 0) {
+					//tabelaM.setValueAt(nome, linhaAlt, 0);
+					
+					linhaAlt = -1;
+					
+				} else {
+					if (rbAlimento.isSelected()) {
+						classificacao2 = rbAlimento.getText();
+					}
+					if (rbVestimenta.isSelected()) {
+						classificacao2 = rbVestimenta.getText();
+					}
+					if (rbAcessorio.isSelected()) {
+						classificacao2 = rbAcessorio.getText();
+					}
+					if (rbMedicamento.isSelected()) {
+						classificacao2 = rbMedicamento.getText();
+					}
+					if (rbHigBel.isSelected()) {
+						classificacao2 = rbHigBel.getText();
+					}
+					
+					if (ckMamiferos.isSelected()) {
+						grupoAlvo = ckMamiferos.getText();
+					} else if(ckReptil.isSelected()) {
+						grupoAlvo = ckReptil.getText();
+					} else if(ckAnfibios.isSelected()) {
+						grupoAlvo = ckAnfibios.getText();
+					} else if(ckPeixes.isSelected()) {
+						grupoAlvo = ckPeixes.getText();
+					} else if(ckAves.isSelected()) {
+						grupoAlvo = ckAves.getText();
+					}
+					
+					Object[] informacoes  = {nome, codigo, preco, quant, uniMedida, marca, dataValid, classificacao2, grupoAlvo};
+					
+					tabelaM.addRow(informacoes);
+					
+					
+					tfNomeProduto.setText("");
+					tfCodigo.setText("");
+					tfPreco.setText("");
+					tfQuantidade.setText("");
+					tfMarca.setText("");
+					tfDataValid.setText("");
+					classificacao.clearSelection();
+					ckReptil.setSelected(false);
+					ckMamiferos.setSelected(false);
+					ckAnfibios.setSelected(false);
+					ckPeixes.setSelected(false);
+					ckAves.setSelected(false);
+					
 				}
 				
-				if (ckMamiferos.isSelected()) {
-					grupoAlvo = ckMamiferos.getText();
-				} else if(ckReptil.isSelected()) {
-					grupoAlvo = ckReptil.getText();
-				} else if(ckAnfibios.isSelected()) {
-					grupoAlvo = ckAnfibios.getText();
-				} else if(ckPeixes.isSelected()) {
-					grupoAlvo = ckPeixes.getText();
-				} else if(ckAves.isSelected()) {
-					grupoAlvo = ckAves.getText();
-				}
 				
-				Object[] informacoes  = {nome, codigo, "R$ " + preco, quant, uniMedida, marca, dataValid, classificacao, grupoAlvo};
+				//produtosCad = new TabelaProdutosCadastrado();
 				
-				produtosCad.AdicionarProdutos(informacoes);
+				//String nome = tfNomeProduto.getText();
+				//String codigo = tfCodigo.getText();
+				//String preco = tfPreco.getText();
+				//Double preco2 = Double.parseDouble(tfPreco.getText());
 				
-				produtosCad.setVisible(true);
+				//String quant = tfQuantidade.getText();
+				//Object quant2 = spQuant.getValue();
+				//int quant3 = (int) quant2;
+				
+				
+				//String uniMedida = (String) cbUniMed.getSelectedItem();
+				//String marca = tfMarca.getText();
+				//String dataValid = tfDataValid.getText();
+				//String classificacao = "";
+				//String grupoAlvo = "";
+				
+				//if (rbAlimento.isSelected()) {
+				//	classificacao = rbAlimento.getText();
+				//}
+				//if (rbVestimenta.isSelected()) {
+				//	classificacao = rbVestimenta.getText();
+				//}
+				//if (rbAcessorio.isSelected()) {
+				//	classificacao = rbAcessorio.getText();
+				//}
+				//if (rbMedicamento.isSelected()) {
+				//	classificacao = rbMedicamento.getText();
+				//}
+				//if (rbHigBel.isSelected()) {
+				//	classificacao = rbHigBel.getText();
+				//}
+				
+				//if (ckMamiferos.isSelected()) {
+				//	grupoAlvo = ckMamiferos.getText();
+				//} else if(ckReptil.isSelected()) {
+				//	grupoAlvo = ckReptil.getText();
+				//} else if(ckAnfibios.isSelected()) {
+				//	grupoAlvo = ckAnfibios.getText();
+				//} else if(ckPeixes.isSelected()) {
+				//	grupoAlvo = ckPeixes.getText();
+				//} else if(ckAves.isSelected()) {
+				//	grupoAlvo = ckAves.getText();
+				//}
+				
+				//Object[] informacoes  = {nome, codigo, "R$ " + String.format("%.2f", preco2), quant3, uniMedida, marca, dataValid, classificacao, grupoAlvo};
+				
+				//produtosCad.AdicionarProdutos(informacoes);
+				
+				//produtosCad.setVisible(true);
 				
 			}
 		});
-		btCadastrarProd.setBounds(188, 469, 109, 23);
+		btCadastrarProd.setBounds(65, 749, 109, 23);
 		contentPane.add(btCadastrarProd);
-		
-		
-		JButton btLista = new JButton("Lista");
-		
-		btLista.setBorderPainted(false);
-		
-		btLista.setBackground(new Color(216, 166, 253));
-		btLista.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				TelaLogin login = new TelaLogin();
-				login.setVisible(true);
-				
-			}
-		});
-		btLista.setBounds(474, 53, 89, 23);
-		contentPane.add(btLista);
-		
-		JTextArea textArea = new JTextArea();
-		textArea.setEnabled(false);
-		textArea.setEditable(false);
-		textArea.setBackground(new Color(239, 218, 254));
-		textArea.setBounds(453, 0, 120, 503);
-		contentPane.add(textArea);
 		
 		JList list = new JList();
 		list.setBounds(343, 345, 1, 1);
 		contentPane.add(list);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(21, 302, 862, 403);
+		contentPane.add(scrollPane);
+		
+		tabela = new JTable();
+		tabela.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+					"Nome", "Código", "Preço(R$)", "Quantidade", "Uni. de Med.", "Marca", "Data de Valid.", "Classificação", "Grupo Alvo"
+			}
+		));
+		scrollPane.setViewportView(tabela);
+		
+		
+		
+		tabela.addMouseListener(new MouseAdapter(){
+			public void mouseClicked(MouseEvent e) {
+				
+				if (tabela.getSelectedRow() != -1) {
+					
+					tfNomeProduto.setText(tabela.getValueAt(tabela.getSelectedRow(), 0).toString());
+					tfCodigo.setText(tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
+					tfPreco.setText(tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
+					tfQuantidade.setText(tabela.getValueAt(tabela.getSelectedRow(), 3).toString());
+					tfMarca.setText(tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
+					cbUniMed.setSelectedItem(tabela.getValueAt(tabela.getSelectedRow(), 4).toString());
+					tfDataValid.setText(tabela.getValueAt(tabela.getSelectedRow(), 6).toString());
+					
+					if ((tabela.getValueAt(tabela.getSelectedRow(), 7).toString()).equals("Alimento")) {
+						rbAlimento.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 7).toString()).equals("Vestimenta")) {
+						rbVestimenta.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 7).toString()).equals("Acessório")) {
+						rbAcessorio.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 7).toString()).equals("Medicamentos")) {
+						rbMedicamento.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 7).toString()).equals("Higiene e Beleza")) {
+						rbHigBel.setSelected(true);
+					}
+					
+					
+					
+					if ((tabela.getValueAt(tabela.getSelectedRow(), 8).toString()).equals("Mamíferos")) {
+						ckMamiferos.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 8).toString()).equals("Répteis")) {
+						ckReptil.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 8).toString()).equals("Anfíbios")) {
+						ckAnfibios.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 8).toString()).equals("Peixes")) {
+						ckPeixes.setSelected(true);
+					}
+					else if ((tabela.getValueAt(tabela.getSelectedRow(), 8).toString()).equals("Aves")) {
+						ckAves.setSelected(true);
+					}
+					
+				} else {
+					JOptionPane.showMessageDialog(null, "Selecione uma opção", "Atenção", JOptionPane.WARNING_MESSAGE);
+				}
+				
+			}
+			
+			
+		});
+		
+		
+		
+		
+		
+		JButton btAlterar = new JButton("Alterar");
+		btAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(tabela.getSelectedRow() != -1) {
+					
+					// Mudando os Valores
+					tabela.setValueAt(tfNomeProduto.getText(), tabela.getSelectedRow(), 0);
+					tabela.setValueAt(tfCodigo.getText(), tabela.getSelectedRow(), 1);
+					tabela.setValueAt(tfPreco.getText(), tabela.getSelectedRow(), 2);
+					tabela.setValueAt(tfQuantidade.getText(), tabela.getSelectedRow(), 3);
+					tabela.setValueAt(cbUniMed.getSelectedItem(), tabela.getSelectedRow(), 4);
+					tabela.setValueAt(tfMarca.getText(), tabela.getSelectedRow(), 5);
+					tabela.setValueAt(tfDataValid.getText(), tabela.getSelectedRow(), 6);
+					
+					if(rbAlimento.isSelected()) {
+						tabela.setValueAt(rbAlimento.getText(), tabela.getSelectedRow(), 7);
+					}
+					else if(rbVestimenta.isSelected()) {
+						tabela.setValueAt(rbVestimenta.getText(), tabela.getSelectedRow(), 7);
+					}
+					else if(rbAcessorio.isSelected()) {
+						tabela.setValueAt(rbAcessorio.getText(), tabela.getSelectedRow(), 7);
+					}
+					else if(rbMedicamento.isSelected()) {
+						tabela.setValueAt(rbMedicamento.getText(), tabela.getSelectedRow(), 7);
+					}
+					else if(rbHigBel.isSelected()) {
+						tabela.setValueAt(rbHigBel.getText(), tabela.getSelectedRow(), 7);
+					}
+					
+					if (ckMamiferos.isSelected()) {
+						tabela.setValueAt(ckMamiferos.getText(), tabela.getSelectedRow(), 8);
+					}
+					else if (ckReptil.isSelected()) {
+						tabela.setValueAt(ckReptil.getText(), tabela.getSelectedRow(), 8);
+					}
+					else if (ckAnfibios.isSelected()) {
+						tabela.setValueAt(ckAnfibios.getText(), tabela.getSelectedRow(), 8);
+					}
+					else if (ckPeixes.isSelected()) {
+						tabela.setValueAt(ckPeixes.getText(), tabela.getSelectedRow(), 8);
+					}
+					else if (ckAves.isSelected()) {
+						tabela.setValueAt(ckAves.getText(), tabela.getSelectedRow(), 8);
+					}
+					
+					tfNomeProduto.setText("");
+					tfCodigo.setText("");
+					tfPreco.setText("");
+					tfQuantidade.setText("");
+					tfMarca.setText("");
+					tfDataValid.setText("");
+					classificacao.clearSelection();
+					ckReptil.setSelected(false);
+					ckMamiferos.setSelected(false);
+					ckAnfibios.setSelected(false);
+					ckPeixes.setSelected(false);
+					ckAves.setSelected(false);
+					
+				}
+				
+			}
+		});
+		
+		btAlterar.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btAlterar.setBounds(237, 750, 85, 21);
+		contentPane.add(btAlterar);
+		
+		JButton btExcluir = new JButton("Excluir");
+		btExcluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int linhaSelecionada = tabela.getSelectedRow();
+				
+				if (linhaSelecionada >= 0) {
+					tabelaM.removeRow(linhaSelecionada);
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Selecione uma linha para Excluir!");
+				}
+				
+				tfNomeProduto.setText("");
+				tfCodigo.setText("");
+				tfPreco.setText("");
+				tfQuantidade.setText("");
+				tfMarca.setText("");
+				tfDataValid.setText("");
+				classificacao.clearSelection();
+				ckReptil.setSelected(false);
+				ckMamiferos.setSelected(false);
+				ckAnfibios.setSelected(false);
+				ckPeixes.setSelected(false);
+				ckAves.setSelected(false);
+				
+			}
+		});
+		btExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btExcluir.setBounds(399, 750, 85, 21);
+		contentPane.add(btExcluir);
 		
 	}
 }
