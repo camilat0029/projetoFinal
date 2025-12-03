@@ -53,39 +53,38 @@ public class TelaCarrinhoDeCompras extends JFrame {
 	 */
 	public TelaCarrinhoDeCompras() {
 		setTitle("Tela de Carrinho de Compras");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 458, 406);
+		
+		setResizable(false);
+		setLocationRelativeTo(null);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		mnMenu1 = new JMenu("");
-		mnMenu1.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-cardápio-50_2.png"));
+		mnMenu1 = new JMenu(">");
 		menuBar.add(mnMenu1);
-		
-		login = new TelaLogin();
-		produtos = new TelaProdutos();
 		
 		mnLogin = new JMenuItem("Login");
 		mnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				login = new TelaLogin();
 				login.setVisible(true);
 				
 			}
 		});
-		mnLogin.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-access-50_2.png"));
 		mnMenu1.add(mnLogin);
 		
 		mniProdutos = new JMenuItem("Continuar Comprando");
 		mniProdutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				produtos = new TelaProdutos();
 				produtos.setVisible(true);
 				
 			}
 		});
-		mniProdutos.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-shopping-bag-50 (1).png"));
 		mnMenu1.add(mniProdutos);
 		
 		mniSair = new JMenuItem("Sair");
@@ -96,7 +95,6 @@ public class TelaCarrinhoDeCompras extends JFrame {
 				
 			}
 		});
-		mniSair.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-x-50.png"));
 		mnMenu1.add(mniSair);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -118,7 +116,7 @@ public class TelaCarrinhoDeCompras extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				JOptionPane.showMessageDialog(null, "Compra Finalizada com Sucesso! \nVolte Sempre!", 
-						"Tela de Notificação", JOptionPane.INFORMATION_MESSAGE); 
+						"Tela de Notificação", JOptionPane.INFORMATION_MESSAGE);
 				
 			}
 		});

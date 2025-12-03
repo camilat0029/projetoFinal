@@ -49,7 +49,7 @@ public class TelaProdutos extends JFrame {
 	public TelaProdutos() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
 		setTitle("Produtos");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 642, 750);
 		
 		setResizable(false);
@@ -58,12 +58,10 @@ public class TelaProdutos extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnMenu1 = new JMenu("");
-		mnMenu1.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-cardápio-50_2.png"));
+		JMenu mnMenu1 = new JMenu(">");
 		menuBar.add(mnMenu1);
 		
 		JMenuItem mniLogin = new JMenuItem("Login");
-		mniLogin.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-access-50_2.png"));
 		mniLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -75,7 +73,6 @@ public class TelaProdutos extends JFrame {
 		mnMenu1.add(mniLogin);
 		
 		JMenuItem mniSair = new JMenuItem("Sair");
-		mniSair.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-x-50.png"));
 		mniSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -85,19 +82,18 @@ public class TelaProdutos extends JFrame {
 		});
 		mnMenu1.add(mniSair);
 		
-		JMenu mnMenu2 = new JMenu("");
-		mnMenu2.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-shopping-bag-50 (1).png"));
+		JMenu mnMenu2 = new JMenu("Carrinho");
 		menuBar.add(mnMenu2);
 		
 		JMenuItem mniTerminarCompra = new JMenuItem("Ir para Carrinho");
 		mniTerminarCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				compras.setVisible(true);
 				
+				compras.setVisible(true);
+				dispose();
 			}
 		});
-		mniTerminarCompra.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-shopaholic-50.png"));
 		mnMenu2.add(mniTerminarCompra);
 		
 		contentPane = new JPanel();
@@ -126,6 +122,8 @@ public class TelaProdutos extends JFrame {
 		lbPreco1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbPreco1.setBounds(35, 289, 68, 13);
 		contentPane.add(lbPreco1);
+		
+		compras = new TelaCarrinhoDeCompras();
 		
 		JButton btComprar2 = new JButton("Comprar Agora");
 		btComprar2.addActionListener(new ActionListener() {
@@ -175,9 +173,6 @@ public class TelaProdutos extends JFrame {
 		lbPreco2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lbPreco2.setBounds(242, 291, 75, 13);
 		contentPane.add(lbPreco2);
-		
-		
-		compras = new TelaCarrinhoDeCompras();
 		
 		
 		JButton btComprar1 = new JButton("Comprar Agora");

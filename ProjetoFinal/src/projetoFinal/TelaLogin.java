@@ -57,7 +57,7 @@ public class TelaLogin extends JFrame {
 	public TelaLogin() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
 		setTitle("Tela de Login");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		
 		setResizable(false);
@@ -102,12 +102,11 @@ public class TelaLogin extends JFrame {
 		JButton btEntrar = new JButton("Entrar");
 		btEntrar.setFont(new Font("Tahoma", Font.BOLD, 14));
 		
-		cadProdutos = new TelaCadastroProdutos();
-		produtos = new TelaProdutos();
-		
 		btEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				cadProdutos = new TelaCadastroProdutos();
+				produtos = new TelaProdutos();
 				usuario = new Usuario(tfUsuario.getText(), pfSenha.getText(), cbIdentificacao.getSelectedItem().toString());
 				usuario1 = tfUsuario.getText();
 				senha1 = pfSenha.getText();
@@ -142,7 +141,6 @@ public class TelaLogin extends JFrame {
 		btEntrar.setBounds(182, 189, 98, 23);
 		contentPane.add(btEntrar);
 		
-		cadastro = new TelaCadastro();
 		
 		JButton btFazerCadastro = new JButton("Cadastre-se");
 		btFazerCadastro.setHorizontalAlignment(SwingConstants.LEFT);
@@ -150,6 +148,7 @@ public class TelaLogin extends JFrame {
 		btFazerCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				cadastro = new TelaCadastro();
 				cadastro.setVisible(true);
 				
 			}
