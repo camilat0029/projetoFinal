@@ -104,7 +104,7 @@ public class TelaProdutos extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lbImagem1 = new JLabel("");
-		lbImagem1.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\Trabalho Telas - Design Gráfico (27).png"));
+		lbImagem1.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed.png"));
 		lbImagem1.setBounds(35, 93, 150, 145);
 		contentPane.add(lbImagem1);
 		

@@ -149,11 +149,6 @@ public class TelaCadastroProdutos extends JFrame {
 		lbQuant.setBounds(21, 67, 71, 14);
 		contentPane.add(lbQuant);
 		
-		JSpinner spQuant = new JSpinner();
-		spQuant.setModel(new SpinnerNumberModel(0, 0, 100, 1));
-		spQuant.setBounds(881, 115, 40, 20);
-		contentPane.add(spQuant);
-		
 		tfQuantidade = new JTextField();
 		tfQuantidade.setBounds(102, 66, 86, 20);
 		contentPane.add(tfQuantidade);
