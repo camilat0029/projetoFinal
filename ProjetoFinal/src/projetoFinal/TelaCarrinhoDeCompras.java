@@ -18,6 +18,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JButton;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class TelaCarrinhoDeCompras extends JFrame {
 
@@ -52,6 +53,7 @@ public class TelaCarrinhoDeCompras extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCarrinhoDeCompras() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCarrinhoDeCompras.class.getResource("/projetoFinal/Imagem - Logo.png")));
 		setTitle("Tela de Carrinho de Compras");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 458, 406);
@@ -62,10 +64,12 @@ public class TelaCarrinhoDeCompras extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		mnMenu1 = new JMenu(">");
+		mnMenu1 = new JMenu("");
+		mnMenu1.setIcon(new ImageIcon(TelaCarrinhoDeCompras.class.getResource("/projetoFinal/unnamed (6).png")));
 		menuBar.add(mnMenu1);
 		
 		mnLogin = new JMenuItem("Login");
+		mnLogin.setIcon(new ImageIcon(TelaCarrinhoDeCompras.class.getResource("/projetoFinal/unnamed (7).png")));
 		mnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -77,6 +81,7 @@ public class TelaCarrinhoDeCompras extends JFrame {
 		mnMenu1.add(mnLogin);
 		
 		mniProdutos = new JMenuItem("Continuar Comprando");
+		mniProdutos.setIcon(new ImageIcon(TelaCarrinhoDeCompras.class.getResource("/projetoFinal/unnamed (9).png")));
 		mniProdutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -88,6 +93,7 @@ public class TelaCarrinhoDeCompras extends JFrame {
 		mnMenu1.add(mniProdutos);
 		
 		mniSair = new JMenuItem("Sair");
+		mniSair.setIcon(new ImageIcon(TelaCarrinhoDeCompras.class.getResource("/projetoFinal/unnamed (8).png")));
 		mniSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -108,6 +114,7 @@ public class TelaCarrinhoDeCompras extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		taCompras = new JTextArea();
+		taCompras.setEditable(false);
 		taCompras.setBounds(43, 63, 362, 228);
 		contentPane.add(taCompras);
 		

@@ -55,7 +55,7 @@ public class TelaLogin extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaLogin() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaLogin.class.getResource("/projetoFinal/Imagem - Logo.png")));
 		setTitle("Tela de Login");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

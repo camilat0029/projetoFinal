@@ -52,7 +52,7 @@ public class TelaCadastro extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastro() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaCadastro.class.getResource("/projetoFinal/Imagem - Logo.png")));
 		setTitle("Cadastro");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);

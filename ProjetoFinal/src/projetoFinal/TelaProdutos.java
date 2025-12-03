@@ -47,7 +47,7 @@ public class TelaProdutos extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaProdutos() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Camila\\Desktop\\Camila\\Design Gráfico\\Projeto Telas\\Patinha2.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TelaProdutos.class.getResource("/projetoFinal/Imagem - Logo.png")));
 		setTitle("Produtos");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 642, 750);
@@ -58,10 +58,12 @@ public class TelaProdutos extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnMenu1 = new JMenu(">");
+		JMenu mnMenu1 = new JMenu("");
+		mnMenu1.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (6).png")));
 		menuBar.add(mnMenu1);
 		
 		JMenuItem mniLogin = new JMenuItem("Login");
+		mniLogin.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (7).png")));
 		mniLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -73,6 +75,7 @@ public class TelaProdutos extends JFrame {
 		mnMenu1.add(mniLogin);
 		
 		JMenuItem mniSair = new JMenuItem("Sair");
+		mniSair.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (8).png")));
 		mniSair.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -82,10 +85,12 @@ public class TelaProdutos extends JFrame {
 		});
 		mnMenu1.add(mniSair);
 		
-		JMenu mnMenu2 = new JMenu("Carrinho");
+		JMenu mnMenu2 = new JMenu("");
+		mnMenu2.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (9).png")));
 		menuBar.add(mnMenu2);
 		
 		JMenuItem mniTerminarCompra = new JMenuItem("Ir para Carrinho");
+		mniTerminarCompra.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (10).png")));
 		mniTerminarCompra.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
