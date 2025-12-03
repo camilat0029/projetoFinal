@@ -137,7 +137,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfCodigo.setColumns(10);
 		
 		JLabel lbPreco = new JLabel("Preço");
-		lbPreco.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbPreco.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbPreco.setBounds(679, 23, 46, 14);
 		contentPane.add(lbPreco);
 		
@@ -209,7 +209,7 @@ public class TelaCadastroProdutos extends JFrame {
 		contentPane.add(ckAves);
 		
 		JLabel lbDataVal = new JLabel("Data de Validade");
-		lbDataVal.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbDataVal.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbDataVal.setBounds(679, 67, 116, 14);
 		contentPane.add(lbDataVal);
 		
