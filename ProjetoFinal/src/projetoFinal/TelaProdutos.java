@@ -140,27 +140,27 @@ public class TelaProdutos extends JFrame {
 		contentPane.add(btComprar2);
 		
 		JLabel lbImagem2 = new JLabel("");
-		lbImagem2.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed (5).png"));
+		lbImagem2.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (5).png")));
 		lbImagem2.setBounds(242, 93, 144, 145);
 		contentPane.add(lbImagem2);
 		
 		JLabel lbImagem3 = new JLabel("");
-		lbImagem3.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed (1).png"));
+		lbImagem3.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (1).png")));
 		lbImagem3.setBounds(440, 103, 150, 120);
 		contentPane.add(lbImagem3);
 		
 		JLabel lbImagem4 = new JLabel("");
-		lbImagem4.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed (3).png"));
+		lbImagem4.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (3).png")));
 		lbImagem4.setBounds(35, 398, 150, 167);
 		contentPane.add(lbImagem4);
 		
 		JLabel lbImagem5 = new JLabel("");
-		lbImagem5.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed (2).png"));
+		lbImagem5.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (2).png")));
 		lbImagem5.setBounds(242, 400, 144, 165);
 		contentPane.add(lbImagem5);
 		
 		JLabel lbImagem6 = new JLabel("");
-		lbImagem6.setIcon(new ImageIcon("C:\\Users\\aluno\\Downloads\\unnamed (4).png"));
+		lbImagem6.setIcon(new ImageIcon(TelaProdutos.class.getResource("/projetoFinal/unnamed (4).png")));
 		lbImagem6.setBounds(440, 398, 144, 167);
 		contentPane.add(lbImagem6);
 		
