@@ -29,6 +29,10 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.ImageIcon;
 
 public class TelaCadastroProdutos extends JFrame {
 
@@ -41,8 +45,8 @@ public class TelaCadastroProdutos extends JFrame {
 	private JTextField tfMarca;
 	private JTextField tfDataValid;
 	
-	private TabelaProdutosCadastrado produtosCad;
 	private JTable tabela;
+	private TelaLogin login;
 	
 	DefaultTableModel tabelaM;
 	
@@ -77,13 +81,43 @@ public class TelaCadastroProdutos extends JFrame {
 		
 		setResizable(false);
 		setLocationRelativeTo(null);
+		
+		JMenuBar menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		JMenu mnMenu = new JMenu("");
+		mnMenu.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-cardápio-50_2.png"));
+		menuBar.add(mnMenu);
+		
+		JMenuItem mnLogin = new JMenuItem("Login");
+		mnLogin.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-access-50_2.png"));
+		mnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				login = new TelaLogin();
+				login.setVisible(true);
+				
+			}
+		});
+		mnMenu.add(mnLogin);
+		
+		JMenuItem mniSair = new JMenuItem("Sair");
+		mniSair.setIcon(new ImageIcon("C:\\Users\\Camila\\Desktop\\Camila\\PDS\\icons8-x-50.png"));
+		mniSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				
+			}
+		});
+		mnMenu.add(mniSair);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		JLabel lbNomeProduto = new JLabel("Nome do Produto");
-		lbNomeProduto.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lbNomeProduto.setBounds(21, 23, 105, 14);
+		lbNomeProduto.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lbNomeProduto.setBounds(21, 23, 115, 14);
 		contentPane.add(lbNomeProduto);
 		
 		tfNomeProduto = new JTextField();
@@ -93,7 +127,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfNomeProduto.setColumns(10);
 		
 		JLabel lbCodigo = new JLabel("Código");
-		lbCodigo.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbCodigo.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbCodigo.setBounds(466, 23, 46, 14);
 		contentPane.add(lbCodigo);
 		
@@ -114,7 +148,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfPreco.setColumns(10);
 		
 		JLabel lbQuant = new JLabel("Quantidade");
-		lbQuant.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbQuant.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbQuant.setBounds(21, 67, 71, 14);
 		contentPane.add(lbQuant);
 		
@@ -129,7 +163,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfQuantidade.setColumns(10);
 		
 		JLabel lbMedidas = new JLabel("Unidade Medida");
-		lbMedidas.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbMedidas.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbMedidas.setBounds(239, 67, 105, 14);
 		contentPane.add(lbMedidas);
 		
@@ -140,7 +174,7 @@ public class TelaCadastroProdutos extends JFrame {
 		contentPane.add(cbUniMed);
 		
 		JLabel lbMarca = new JLabel("Marca");
-		lbMarca.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbMarca.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbMarca.setBounds(466, 67, 46, 14);
 		contentPane.add(lbMarca);
 		
@@ -150,7 +184,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfMarca.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("Escolha o Grupo Alvo:");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lblNewLabel.setBounds(21, 116, 210, 14);
 		contentPane.add(lblNewLabel);
 		
@@ -190,7 +224,7 @@ public class TelaCadastroProdutos extends JFrame {
 		tfDataValid.setColumns(10);
 		
 		JLabel lbClassiicacao = new JLabel("Classificação:");
-		lbClassiicacao.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lbClassiicacao.setFont(new Font("Tahoma", Font.BOLD, 12));
 		lbClassiicacao.setBounds(21, 204, 105, 14);
 		contentPane.add(lbClassiicacao);
 		
@@ -229,11 +263,11 @@ public class TelaCadastroProdutos extends JFrame {
 		
 		
 		JButton btCadastrarProd = new JButton("Cadastrar");
-		btCadastrarProd.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btCadastrarProd.setBackground(new Color(184, 185, 245));
+		btCadastrarProd.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btCadastrarProd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				produtosCad = new TabelaProdutosCadastrado();
 				tabelaM = (DefaultTableModel) tabela.getModel();
 				
 				
@@ -249,7 +283,6 @@ public class TelaCadastroProdutos extends JFrame {
 				String grupoAlvo = "";
 				
 				if (linhaAlt >= 0) {
-					//tabelaM.setValueAt(nome, linhaAlt, 0);
 					
 					linhaAlt = -1;
 					
@@ -287,77 +320,13 @@ public class TelaCadastroProdutos extends JFrame {
 					tabelaM.addRow(informacoes);
 					
 					
-					tfNomeProduto.setText("");
-					tfCodigo.setText("");
-					tfPreco.setText("");
-					tfQuantidade.setText("");
-					tfMarca.setText("");
-					tfDataValid.setText("");
-					classificacao.clearSelection();
-					ckReptil.setSelected(false);
-					ckMamiferos.setSelected(false);
-					ckAnfibios.setSelected(false);
-					ckPeixes.setSelected(false);
-					ckAves.setSelected(false);
+					limpaCampos(ckMamiferos, ckReptil, ckAnfibios, ckPeixes, ckAves, classificacao);
 					
 				}
 				
-				
-				//produtosCad = new TabelaProdutosCadastrado();
-				
-				//String nome = tfNomeProduto.getText();
-				//String codigo = tfCodigo.getText();
-				//String preco = tfPreco.getText();
-				//Double preco2 = Double.parseDouble(tfPreco.getText());
-				
-				//String quant = tfQuantidade.getText();
-				//Object quant2 = spQuant.getValue();
-				//int quant3 = (int) quant2;
-				
-				
-				//String uniMedida = (String) cbUniMed.getSelectedItem();
-				//String marca = tfMarca.getText();
-				//String dataValid = tfDataValid.getText();
-				//String classificacao = "";
-				//String grupoAlvo = "";
-				
-				//if (rbAlimento.isSelected()) {
-				//	classificacao = rbAlimento.getText();
-				//}
-				//if (rbVestimenta.isSelected()) {
-				//	classificacao = rbVestimenta.getText();
-				//}
-				//if (rbAcessorio.isSelected()) {
-				//	classificacao = rbAcessorio.getText();
-				//}
-				//if (rbMedicamento.isSelected()) {
-				//	classificacao = rbMedicamento.getText();
-				//}
-				//if (rbHigBel.isSelected()) {
-				//	classificacao = rbHigBel.getText();
-				//}
-				
-				//if (ckMamiferos.isSelected()) {
-				//	grupoAlvo = ckMamiferos.getText();
-				//} else if(ckReptil.isSelected()) {
-				//	grupoAlvo = ckReptil.getText();
-				//} else if(ckAnfibios.isSelected()) {
-				//	grupoAlvo = ckAnfibios.getText();
-				//} else if(ckPeixes.isSelected()) {
-				//	grupoAlvo = ckPeixes.getText();
-				//} else if(ckAves.isSelected()) {
-				//	grupoAlvo = ckAves.getText();
-				//}
-				
-				//Object[] informacoes  = {nome, codigo, "R$ " + String.format("%.2f", preco2), quant3, uniMedida, marca, dataValid, classificacao, grupoAlvo};
-				
-				//produtosCad.AdicionarProdutos(informacoes);
-				
-				//produtosCad.setVisible(true);
-				
 			}
 		});
-		btCadastrarProd.setBounds(65, 749, 109, 23);
+		btCadastrarProd.setBounds(122, 663, 109, 23);
 		contentPane.add(btCadastrarProd);
 		
 		JList list = new JList();
@@ -365,7 +334,7 @@ public class TelaCadastroProdutos extends JFrame {
 		contentPane.add(list);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(21, 302, 862, 403);
+		scrollPane.setBounds(21, 302, 862, 307);
 		contentPane.add(scrollPane);
 		
 		tabela = new JTable();
@@ -441,12 +410,12 @@ public class TelaCadastroProdutos extends JFrame {
 		
 		
 		JButton btAlterar = new JButton("Alterar");
+		btAlterar.setBackground(new Color(184, 185, 245));
 		btAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(tabela.getSelectedRow() != -1) {
 					
-					// Mudando os Valores
 					tabela.setValueAt(tfNomeProduto.getText(), tabela.getSelectedRow(), 0);
 					tabela.setValueAt(tfCodigo.getText(), tabela.getSelectedRow(), 1);
 					tabela.setValueAt(tfPreco.getText(), tabela.getSelectedRow(), 2);
@@ -487,29 +456,19 @@ public class TelaCadastroProdutos extends JFrame {
 						tabela.setValueAt(ckAves.getText(), tabela.getSelectedRow(), 8);
 					}
 					
-					tfNomeProduto.setText("");
-					tfCodigo.setText("");
-					tfPreco.setText("");
-					tfQuantidade.setText("");
-					tfMarca.setText("");
-					tfDataValid.setText("");
-					classificacao.clearSelection();
-					ckReptil.setSelected(false);
-					ckMamiferos.setSelected(false);
-					ckAnfibios.setSelected(false);
-					ckPeixes.setSelected(false);
-					ckAves.setSelected(false);
+					limpaCampos(ckMamiferos, ckReptil, ckAnfibios, ckPeixes, ckAves, classificacao);
 					
 				}
 				
 			}
 		});
 		
-		btAlterar.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btAlterar.setBounds(237, 750, 85, 21);
+		btAlterar.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btAlterar.setBounds(407, 664, 85, 21);
 		contentPane.add(btAlterar);
 		
 		JButton btExcluir = new JButton("Excluir");
+		btExcluir.setBackground(new Color(184, 185, 245));
 		btExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -522,24 +481,29 @@ public class TelaCadastroProdutos extends JFrame {
 					JOptionPane.showMessageDialog(null, "Selecione uma linha para Excluir!");
 				}
 				
-				tfNomeProduto.setText("");
-				tfCodigo.setText("");
-				tfPreco.setText("");
-				tfQuantidade.setText("");
-				tfMarca.setText("");
-				tfDataValid.setText("");
-				classificacao.clearSelection();
-				ckReptil.setSelected(false);
-				ckMamiferos.setSelected(false);
-				ckAnfibios.setSelected(false);
-				ckPeixes.setSelected(false);
-				ckAves.setSelected(false);
+				limpaCampos(ckMamiferos, ckReptil, ckAnfibios, ckPeixes, ckAves, classificacao);
 				
 			}
 		});
-		btExcluir.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btExcluir.setBounds(399, 750, 85, 21);
+		btExcluir.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btExcluir.setBounds(640, 664, 85, 21);
 		contentPane.add(btExcluir);
 		
+	}
+	
+	public void limpaCampos(JCheckBox ckMamiferos, JCheckBox ckReptil, JCheckBox ckAnfibios, JCheckBox ckPeixes,
+			JCheckBox ckAves, ButtonGroup classificacao) {
+		tfNomeProduto.setText("");
+		tfCodigo.setText("");
+		tfPreco.setText("");
+		tfQuantidade.setText("");
+		tfMarca.setText("");
+		tfDataValid.setText("");
+		classificacao.clearSelection();
+		ckReptil.setSelected(false);
+		ckMamiferos.setSelected(false);
+		ckAnfibios.setSelected(false);
+		ckPeixes.setSelected(false);
+		ckAves.setSelected(false);
 	}
 }
