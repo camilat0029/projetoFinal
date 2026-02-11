@@ -1,4 +1,4 @@
-package projetoFinal;
+package telas;
 
 import java.awt.EventQueue;
 
